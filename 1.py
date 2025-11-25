@@ -1,0 +1,32 @@
+words = []
+while True:
+    line = input()
+    if line == '':
+        break
+    words.extend(line.split())
+
+for i in range(len(words)):
+    s = ''
+    for j in range(len(words[i])):
+        if words[i][j] in 'qwertyuiopasdfghjklzxcvbnmёйцукенгшщзхъфывапролджэячсмитьбю':
+            s += words[i][j]
+        elif words[i][j] in 'QWERTYUIOPASDFGHJKLZXCVBNMЁЙЦУКЕНГШЩЗХЪФЫВАПРОЛДЖЭЯЧСМИТЬБЮ':
+            s += words[i][j].lower()
+    words[i] = s
+print('Уникальных слов:', len(set(words)))
+
+
+wc = {}
+length = 0
+for word in words:
+    wc[word] = wc.get(word, 0) + 1
+sorted_wc = sorted(wc.items(), key=lambda x: x[1], reverse=True)
+for i in range(len(sorted_wc)):
+    length += len(sorted_wc[i][0])
+print(sorted_wc)
+print('Топ-3 слов:')   
+print(sorted_wc[0][0], ':', sorted_wc[0][1])
+print(sorted_wc[1][0], ':', sorted_wc[1][1])
+print(sorted_wc[2][0], ':', sorted_wc[2][1])
+#print(*sorted_wc)
+print('Средняя длина:', length / len(sorted_wc))

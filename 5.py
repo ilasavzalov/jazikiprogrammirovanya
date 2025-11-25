@@ -1,0 +1,10 @@
+n = int(input())
+s = [int(i) for i in input().split()]
+print('Исходные:', ', '.join(map(str, s)))
+pol = list(filter(lambda x: x > 0, s))
+print('После фильтра положительных:', ', '.join(map(str, pol)))
+sq = [i * i for i in pol]
+print('После возведения в квадрат:', ', '.join(map(str, sq)))
+de = list(filter(lambda x: x % 3 == 0, sq))
+print('Делящиеся на 3:', ', '.join(map(str, de)))
+print('Сумма:', sum(de))
